@@ -6,9 +6,13 @@ const request = require('request');
 
 request('https://api.thecatapi.com/v1/images/search?breed_ids=' + searchId, (error, response, body) => {
   if (error) {
-    console.log(error);
-    return;
-  } 
+    console.log(error)
+    return
+  }
+  if (body.length === 2) {
+    console.log('empty search')
+    return
+  }
   const data = JSON.parse(body);
   // console.log(data)
   // console.log(typeof data)
